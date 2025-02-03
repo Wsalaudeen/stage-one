@@ -1,0 +1,287 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+
+/* CSS RESET */
+
+/* box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*remove default margin  */
+* {
+  margin: 0;
+}
+
+/* accessible line-height & text rendering */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font: inherit;
+}
+
+/* avoids text overflows */
+h1 {
+  overflow-wrap: break-word;
+}
+
+h1 {
+  text-wrap: balance;
+}
+
+/* css variable custom */
+:root {
+  --text-color: #e2e2e2;
+  --font-heading: "Monoton";
+  --font-body: "Tajawal";
+  --transition-default: all 0.3s ease;
+}
+
+/* Using clamp(), this CSS adapts elements responsively without many media queries, ensuring flexibility and accessibility.*/
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: clamp(10px, 3vw, 30px);
+  font-family: var(--font-body);
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: clamp(1rem, 5vw, 2.5rem);
+  border-radius: clamp(12px, 2vw, 20px);
+  max-width: min(90vw, 600px);
+  width: 100%;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: clamp(1rem, 3vw, 1.5rem);
+  color: var(--text-color);
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: 8px;
+}
+
+.game-instructions {
+  text-align: center;
+  margin-bottom: clamp(1rem, 4vw, 2rem);
+  color: var(--text-color);
+  font-size: clamp(1.5rem, 3vw, 1.1rem);
+  padding: 0 clamp(0.5rem, 2vw, 1rem);
+}
+
+.color-box {
+  width: 100%;
+  height: clamp(120px, 30vw, 180px);
+  border-radius: clamp(8px, 2vw, 15px);
+  margin-bottom: clamp(1rem, 4vw, 2rem);
+  transition: var(--transition-default);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+.score {
+  text-align: center;
+  font-size: clamp(1.5rem, 3.5vw, 1.3rem);
+  margin-bottom: clamp(1rem, 4vw, 2rem);
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.color-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100px, 30%), 1fr));
+  gap: clamp(0.5rem, 2vw, 1.2rem);
+  margin-bottom: clamp(1rem, 4vw, 2rem);
+}
+
+.color-option {
+  aspect-ratio: 1;
+  border-radius: clamp(8px, 2vw, 15px);
+  cursor: pointer;
+  transition: var(--transition-default);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (hover: hover) {
+  .color-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.color-option:active {
+  transform: scale(0.95);
+}
+
+.color-option.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.game-status {
+  text-align: center;
+  min-height: 1.5rem;
+  margin-bottom: clamp(1rem, 4vw, 2rem);
+  font-weight: 600;
+  color: var(--text-color);
+  opacity: 0;
+  transition: var(--transition-default);
+  font-size: clamp(1rem, 3vw, 1.2rem);
+}
+
+.game-status.visible {
+  opacity: 1;
+}
+
+.new-game-btn {
+  display: block;
+  width: 100%;
+  padding: clamp(0.8rem, 2.5vw, 1rem);
+  background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+  color: var(--text-color);
+  border: none;
+  border-radius: clamp(8px, 2vw, 12px);
+  font-size: clamp(1.5rem, 3vw, 1.1rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-default);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+@media (hover: hover) {
+  .new-game-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+  }
+}
+
+.new-game-btn:active {
+  transform: translateY(0);
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(clamp(-5px, -1vw, -8px));
+  }
+  75% {
+    transform: translateX(clamp(5px, 1vw, 8px));
+  }
+}
+
+/* small devices */
+@media screen and (max-width: 320px) {
+  .container {
+    padding: 0.8rem;
+  }
+
+  .color-options {
+    gap: 0.4rem;
+  }
+}
+
+/*smart phones */
+@media screen and (min-width: 321px) and (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+}
+
+/*tablets */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .color-options {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* small desktops */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .color-options {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* large desktops */
+@media screen and (min-width: 1025px) {
+  .container {
+    max-width: 600px;
+  }
+
+  .color-options {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+/* Landscape Mode */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  body {
+    padding: 0.5rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .color-box {
+    height: clamp(80px, 40vh, 120px);
+  }
+
+  .color-options {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem;
+  }
+
+  h1 {
+    font-size: clamp(1.2rem, 4vh, 1.5rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .instructions {
+    margin-bottom: 0.5rem;
+  }
+
+  .score {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* this media query targets screens with a high pixel density dPI = dots per inch */
+@media screen and (min-resolution: 192dpi) {
+  .container {
+    box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.37);
+  }
+}
+
+/* improves accessibility by respecting user preferences for reduced motion(WCAG) */
+@media (prefers-reduced-motion: reduce) {
+  .color-option,
+  .new-game-btn {
+    transition: none;
+  }
+
+  .color-option:hover {
+    transform: none;
+  }
+
+  .color-option.shake {
+    animation: none;
+  }
+}
